@@ -19,7 +19,11 @@ public class LookatFollow : MonoBehaviour
         transform.LookAt(mTarget.position);
         if((transform.position - mTarget.position).magnitude > EPSILON)
         {    transform.Translate(0.0f, 0.0f, mSpeed*Time.deltaTime);
-            GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().UnPause();
+        }
+        else
+        {
+            GetComponent<AudioSource>().Pause();
         }
     }
 }
