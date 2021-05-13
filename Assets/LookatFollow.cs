@@ -10,7 +10,7 @@ public class LookatFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<Animator>().enabled = true;
     }
 
     // Update is called once per frame
@@ -20,10 +20,13 @@ public class LookatFollow : MonoBehaviour
         if((transform.position - mTarget.position).magnitude > EPSILON)
         {    transform.Translate(0.0f, 0.0f, mSpeed*Time.deltaTime);
             GetComponent<AudioSource>().UnPause();
+            //GetComponent<Animator>().Stop(); 
+            GetComponent<Animator>().enabled = true; 
         }
         else
         {
             GetComponent<AudioSource>().Pause();
+            GetComponent<Animator>().enabled = false; 
         }
     }
 }
